@@ -16,7 +16,7 @@ Point_3D& Point_3D::move(double x, double y, double z) {
     return *this;
 }
 
-Point_2D Point_3D::projection(Point_3D origin, Point_3D rotations) const {
+Point_3D Point_3D::rebased(Point_3D origin, Point_3D rotations) const {
     Point_3D rebased_point(*this);
     /* Centering */
     rebased_point.move(
@@ -54,7 +54,11 @@ Point_2D Point_3D::projection(Point_3D origin, Point_3D rotations) const {
         rebased_point.get_z() * cos(angle) - rebased_point.get_x() * sin(angle)
     );
 
-    cout << rebased_point.to_string() << endl;
+    return rebased_point;
+}
+
+Point_2D Point_3D::projection(Point_3D origin, Point_3D rotations) const {
+    Point_3D rebased_point = this->rebased(origin, rotations);
 
     Point_2D projected_point(rebased_point.get_x(), rebased_point.get_y());
 

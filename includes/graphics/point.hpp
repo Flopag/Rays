@@ -20,6 +20,7 @@ namespace graphics {
             Point_3D& move(double x, double y, double z);
 
             Point_2D projection(Point_3D origin, Point_3D rotations) const;
+            Point_3D rebased(Point_3D origin, Point_3D rotations) const;
             string to_string() const;
 
             double get_x() const {return this->x;};

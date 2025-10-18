@@ -6,8 +6,10 @@
 #include <string>
 #include <memory>
 #include "graphics/point.hpp"
+#include "screen/screen.hpp"
 
 using namespace std;
+using namespace screen;
 
 namespace graphics {
 
@@ -23,6 +25,7 @@ namespace graphics {
             };
 
             string to_string() const;
+            void render(Screen& screen, Point_3D origin, Point_3D rotations, Point_3D offset) const;
 
             vector<shared_ptr<Point_3D>> get_points() {
                 return points;
