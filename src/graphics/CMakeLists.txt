@@ -7,9 +7,10 @@ target_sources(Graphics
     
     PUBLIC
         FILE_SET HEADERS
+        BASE_DIRS ${CMAKE_SOURCE_DIR}/include
         FILES
-            face.hpp
-            point.hpp
+            ${CMAKE_SOURCE_DIR}/include/graphics/face.hpp
+            ${CMAKE_SOURCE_DIR}/include/graphics/point.hpp
 )
 
 target_link_libraries(Graphics

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <stdexcept>
 
-#include <screen.hpp>
+#include "screen/screen.hpp"
 
 using namespace screen;
 using namespace std;

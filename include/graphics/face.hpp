@@ -6,7 +6,7 @@
 #include <string>
 #include <memory>
 
-#include <screen.hpp>
+#include <screen/screen.hpp>
 #include "point.hpp"
 
 using namespace std;

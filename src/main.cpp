@@ -1,9 +1,9 @@
 #include <iostream>
 #include <memory>
 
-#include <screen.hpp>
-#include <face.hpp>
-#include <point.hpp>
+#include <screen/screen.hpp>
+#include <graphics/face.hpp>
+#include <graphics/point.hpp>
 
 using namespace std;
 using namespace screen;

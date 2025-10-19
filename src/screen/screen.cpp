@@ -1,6 +1,6 @@
 #include <stdexcept>
 #include <iostream>
-#include "screen.hpp"
+#include "screen/screen.hpp"
 
 #define COORD(i, j) j*this->width+i
 
