@@ -2,7 +2,7 @@
 
 #include <cmath>
 #include <iostream>
-#include "graphics/point.hpp"
+#include "point.hpp"
 
 using namespace graphics;
 

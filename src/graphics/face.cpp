@@ -1,5 +1,5 @@
 #include <cmath>
-#include "graphics/face.hpp"
+#include "face.hpp"
 
 using namespace graphics;
 

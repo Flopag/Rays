@@ -5,8 +5,9 @@
 #include <iostream>
 #include <string>
 #include <memory>
-#include "graphics/point.hpp"
-#include "screen/screen.hpp"
+
+#include <screen.hpp>
+#include "point.hpp"
 
 using namespace std;
 using namespace screen;
