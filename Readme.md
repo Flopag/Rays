@@ -1,6 +1,8 @@
 # Rays
 
-Rays is a little graphical engine to learn how does computer manage graphics
+Rays is a little graphical engine to learn how does computer manage graphics.
+
+Window and painting is managed by [SFML](https://www.sfml-dev.org/)
 
 ## Build
 
