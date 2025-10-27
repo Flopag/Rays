@@ -9,7 +9,7 @@
 
 using namespace std;
 
-namespace screen {
+namespace os_api {
 
     class Screen{
         private:

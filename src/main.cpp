@@ -1,12 +1,12 @@
 #include <iostream>
 #include <memory>
 
-#include <screen/screen.hpp>
+#include <os_api/screen.hpp>
 #include <graphics/face.hpp>
 #include <graphics/point.hpp>
 
 using namespace std;
-using namespace screen;
+using namespace os_api;
 using namespace graphics;
 
 int main() {

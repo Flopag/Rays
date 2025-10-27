@@ -7,9 +7,9 @@ target_sources(rays
 
 target_link_libraries(rays
   PRIVATE
-    Screen
+    os_api
     Graphics
 )
 
 add_subdirectory(graphics)
-add_subdirectory(screen)
+add_subdirectory(os_api)

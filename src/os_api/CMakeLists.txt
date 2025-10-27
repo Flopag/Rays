@@ -1,6 +1,6 @@
-add_library(Screen)
+add_library(os_api)
 
-target_sources(Screen
+target_sources(os_api
     PRIVATE
         screen.cpp
     
@@ -8,7 +8,7 @@ target_sources(Screen
         FILE_SET HEADERS
         BASE_DIRS ${CMAKE_SOURCE_DIR}/include
         FILES
-            ${CMAKE_SOURCE_DIR}/include/screen/screen.hpp
+            ${CMAKE_SOURCE_DIR}/include/os_api/screen.hpp
 )
 
 include(FetchContent)
@@ -20,7 +20,7 @@ FetchContent_Declare(SFML
     SYSTEM)
 FetchContent_MakeAvailable(SFML)
 
-target_link_libraries(Screen 
+target_link_libraries(os_api 
     PUBLIC 
         SFML::Graphics
 )

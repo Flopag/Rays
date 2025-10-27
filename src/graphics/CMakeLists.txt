@@ -15,5 +15,5 @@ target_sources(Graphics
 
 target_link_libraries(Graphics
   PRIVATE
-    Screen
+    os_api
 )

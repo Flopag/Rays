@@ -1,8 +1,8 @@
 #include <stdexcept>
 #include <iostream>
-#include "screen/screen.hpp"
+#include "os_api/screen.hpp"
 
-using namespace screen;
+using namespace os_api;
 
 Screen& Screen::set_pixel(size_t i, size_t j, uint8_t red, uint8_t green, uint8_t blue) {
     if(i >= this->width || j >= this->height || i < 0 || j < 0)

@@ -6,11 +6,11 @@
 #include <string>
 #include <memory>
 
-#include <screen/screen.hpp>
+#include <os_api/screen.hpp>
 #include "point.hpp"
 
 using namespace std;
-using namespace screen;
+using namespace os_api;
 
 namespace graphics {
 
