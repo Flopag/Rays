@@ -6,7 +6,6 @@
 #include <string>
 #include <memory>
 
-#include <screen/color_screen.hpp>
 #include <screen/screen.hpp>
 #include "point.hpp"
 
@@ -28,7 +27,6 @@ namespace graphics {
 
             string to_string() const;
             void render(Screen& screen, Point_3D origin, Point_3D rotations, Point_3D offset) const;
-            void render(Color_screen& screen, Point_3D origin, Point_3D rotations, Point_3D offset) const;
 
             vector<shared_ptr<Point_3D>> get_points() {
                 return points;

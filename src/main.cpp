@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-#include <screen/color_screen.hpp>
+#include <screen/screen.hpp>
 #include <graphics/face.hpp>
 #include <graphics/point.hpp>
 
@@ -10,7 +10,7 @@ using namespace screen;
 using namespace graphics;
 
 int main() {
-    Color_screen my_screen(1000, 500);
+    Screen my_screen(1000, 500);
     my_screen.show();
 
     Face A(make_shared<Point_3D>(25, 25, 0), make_shared<Point_3D>(700, 70, 0), make_shared<Point_3D>(12, 300, 0));

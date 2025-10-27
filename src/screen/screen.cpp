@@ -2,44 +2,31 @@
 #include <iostream>
 #include "screen/screen.hpp"
 
-#define COORD(i, j) j*this->width+i
-
 using namespace screen;
 
-Screen& Screen::set_pixel(size_t i, size_t j, bool value) {
+Screen& Screen::set_pixel(size_t i, size_t j, uint8_t red, uint8_t green, uint8_t blue) {
     if(i >= this->width || j >= this->height || i < 0 || j < 0)
         return *this;
 
-    this->bw_pixels[COORD(i, j)] = value;
+    this->image.setPixel(sf::Vector2u(i, j), sf::Color(red, green, blue));
 
     return *this;
 }
 
 Screen& Screen::flush() {
-    for(size_t j=0; j < this->height; ++j)
-        for(size_t i=0; i < this->width; ++i)
-            this->bw_pixels[COORD(i, j)] = false;
+    this->image = sf::Image({(uint) this->width, (uint) this->height}, this->background_color);
     
     return *this;
 }
 
-void Screen::show() const {
-    cout << this->to_string() << endl;
+void Screen::show() {
+    sf::Texture texture(this->image);
+    sf::Sprite sprite(texture);
+    this->window.draw(sprite);
+    this->window.display();
 }
 
 string Screen::to_string() const {
-    string output_string = "";
-
-    for(size_t j=0; j < this->height; ++j){
-        for(size_t i=0; i < this->width; ++i){
-            if(this->bw_pixels[COORD(i, j)])
-                output_string += "■ ";
-            else
-                output_string += "□ ";
-        }
-
-        output_string += "\n";
-    }
-
-    return output_string;
+    using std::to_string;
+    return "The width is " + to_string(this->width) + " and the height is " + to_string(this->height);
 }
