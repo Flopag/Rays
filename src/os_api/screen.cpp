@@ -19,14 +19,7 @@ Screen& Screen::flush() {
     return *this;
 }
 
-void Screen::show() {
-    sf::Texture texture(this->image);
-    sf::Sprite sprite(texture);
-    this->window.draw(sprite);
-    this->window.display();
-}
-
-string Screen::to_string() const {
-    using std::to_string;
-    return "The width is " + to_string(this->width) + " and the height is " + to_string(this->height);
+shared_ptr<sf::Texture> Screen::get_texture() const {
+    shared_ptr<sf::Texture> texture = make_shared<sf::Texture>(this->image);
+    return texture;
 }

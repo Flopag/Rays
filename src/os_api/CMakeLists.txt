@@ -3,12 +3,14 @@ add_library(os_api)
 target_sources(os_api
     PRIVATE
         screen.cpp
+        window.cpp
     
     PUBLIC
         FILE_SET HEADERS
         BASE_DIRS ${CMAKE_SOURCE_DIR}/include
         FILES
             ${CMAKE_SOURCE_DIR}/include/os_api/screen.hpp
+            ${CMAKE_SOURCE_DIR}/include/os_api/window.hpp
 )
 
 include(FetchContent)
