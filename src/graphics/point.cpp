@@ -8,6 +8,8 @@ using namespace graphics;
 
 /* Point_3D */
 
+Point_3D::Point_3D(const Point_2D& point) : x(point.get_x()), y(point.get_y()), z(0) {};
+
 Point_3D& Point_3D::move(double x, double y, double z) {
     this->x = x;
     this->y = y;

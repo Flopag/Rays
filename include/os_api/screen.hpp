@@ -32,6 +32,8 @@ namespace os_api {
             Screen& flush();
 
             shared_ptr<sf::Texture> get_texture() const;
+            size_t get_width() const {return this->width;};
+            size_t get_height() const {return this->height;};
     };
 
 }
