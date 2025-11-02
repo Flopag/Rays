@@ -41,6 +41,7 @@ namespace graphics {
             double x=0, y=0;
         
         public:
+            Point_2D() {};
             Point_2D(double x, double y) : x(x), y(y) {};
 
             Point_2D& move(double x, double y);

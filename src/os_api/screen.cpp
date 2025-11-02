@@ -8,13 +8,13 @@ Screen& Screen::set_pixel(size_t i, size_t j, uint8_t red, uint8_t green, uint8_
     if(i >= this->width || j >= this->height || i < 0 || j < 0)
         return *this;
 
-    this->image.setPixel(sf::Vector2u(i, j), sf::Color(red, green, blue));
+    this->image.setPixel(sf::Vector2u(j, i), sf::Color(red, green, blue));
 
     return *this;
 }
 
 Screen& Screen::flush() {
-    this->image = sf::Image({(uint) this->width, (uint) this->height}, this->background_color);
+    this->image = sf::Image({(uint) this->height, (uint) this->width}, this->background_color);
     
     return *this;
 }

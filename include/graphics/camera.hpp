@@ -21,6 +21,10 @@ namespace graphics {
                     this->height = 0;
                 }
             };
+
+            Camera& move(Point_3D new_position);
+            Camera& rotate(Point_3D new_rotation);
+
             const Camera& render(Screen& screen, Face face) const;
     };
 

@@ -25,7 +25,7 @@ namespace os_api {
                     width = 0;
                     this->height = 0;
                 }
-                this->image = sf::Image({(uint) width, (uint) height}, this->background_color);
+                this->image = sf::Image({(uint) height, (uint) width}, this->background_color);
             };
 
             Screen& set_pixel(size_t i, size_t j, uint8_t red, uint8_t green, uint8_t blue);
