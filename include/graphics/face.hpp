@@ -41,6 +41,9 @@ namespace graphics {
             Face& update_projection(const Point& origin, const Point& rotations);
             Color get_color(const Point& location) const;
 
+            Point get_projection_max() const;
+            Point get_projection_min() const;
+
             vector<shared_ptr<Point>> get_points() {
                 return points;
             };

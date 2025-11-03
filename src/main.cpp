@@ -29,9 +29,15 @@ int main() {
 
     my_window.refresh();
 
-    // Pause program
-    int useless;
-    cin >> useless;
+    double rot = 0;
+
+    while(my_window.is_open()){
+        my_camera.rotate(Point(rot, 0, rot));
+        my_camera.render(my_window.get_screen(), A);
+        my_window.refresh();
+        my_window.get_screen().flush();
+        rot++;
+    }
 
     return 0;
 }

@@ -16,3 +16,18 @@ Window& Window::refresh() {
 
     return *this;
 }
+
+bool Window::is_open() const {
+    return this->window.isOpen();
+}
+
+Window& Window::close() {
+    this->window.close();
+    return *this;
+}
+
+Window& Window::open() {
+    this->window = sf::RenderWindow(sf::VideoMode({(uint) this->width, (uint) this->height}), "rays", sf::Style::None);
+    this->window.setPosition({0, 0});
+    return *this;
+}

@@ -23,12 +23,16 @@ namespace os_api {
                     width = 0;
                     this->height = 0;
                 }
-                this->window = sf::RenderWindow(sf::VideoMode({(uint) width, (uint) height}), "rays");
+                this->open();
                 this->screen = Screen(width, height);
             };
             
             Screen& get_screen();
             Window& refresh();
+
+            bool is_open() const;
+            Window& close();
+            Window& open();
     };
 
 }

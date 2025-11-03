@@ -1,4 +1,5 @@
 #include <cmath>
+#include<bits/stdc++.h> 
 #include "graphics/face.hpp"
 
 using namespace graphics;
@@ -49,10 +50,6 @@ Color Face::get_color(const Point& location) const {
     if(!this->has_cache)
         return Color();
 
-    Point a = this->cached_projections[0];
-    Point b = this->cached_projections[1];
-    Point c = this->cached_projections[2];
-
     double beta = optimized_barycentrif_function(location, cached_a_beta, cached_b_beta, cached_c_beta) / this->cached_barycentrif_deno_beta;
     if(beta >= 0 && beta <= 1){
         double gamma = optimized_barycentrif_function(location, cached_a_gamma, cached_b_gamma, cached_c_gamma) / this->cached_barycentrif_deno_gamma;
@@ -61,4 +58,44 @@ Color Face::get_color(const Point& location) const {
     }
 
     return Color();
+}
+
+Point Face::get_projection_max() const {
+    double max_x = max({
+        this->cached_projections[0].get_x(), 
+        this->cached_projections[1].get_x(), 
+        this->cached_projections[2].get_x()
+    });
+    double max_y = max({
+        this->cached_projections[0].get_y(), 
+        this->cached_projections[1].get_y(), 
+        this->cached_projections[2].get_y()
+    });
+    double max_z = max({
+        this->cached_projections[0].get_z(), 
+        this->cached_projections[1].get_z(), 
+        this->cached_projections[2].get_z()
+    });
+
+    return Point(max_x, max_y, max_z);
+}
+
+Point Face::get_projection_min() const {
+    double min_x = min({
+        this->cached_projections[0].get_x(), 
+        this->cached_projections[1].get_x(), 
+        this->cached_projections[2].get_x()
+    });
+    double min_y = min({
+        this->cached_projections[0].get_y(), 
+        this->cached_projections[1].get_y(), 
+        this->cached_projections[2].get_y()
+    });
+    double min_z = min({
+        this->cached_projections[0].get_z(), 
+        this->cached_projections[1].get_z(), 
+        this->cached_projections[2].get_z()
+    });
+
+    return Point(min_x, min_y, min_z);
 }
