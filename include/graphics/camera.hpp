@@ -13,7 +13,7 @@ namespace graphics {
             size_t width=0, height=0;
 
         public:
-            Camera(int width, int height) : width(width), height(height) {
+            Camera(int height, int width) : width(width), height(height) {
                 if(width < 0 || height < 0)
                     throw runtime_error("The camera must have positive values as size");
                 if(width == 0 || height == 0){

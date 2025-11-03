@@ -16,14 +16,14 @@ namespace os_api {
             Screen screen;
         
         public:
-            Window(int width, int height) : width(width), height(height) {
+            Window(int height, int width) : width(width), height(height) {
                 if(width < 0 || height < 0)
                     throw runtime_error("The window must have positive values as size");
                 if(width == 0 || height == 0){
                     width = 0;
                     this->height = 0;
                 }
-                this->window = sf::RenderWindow(sf::VideoMode({(uint) height, (uint) width}), "rays");
+                this->window = sf::RenderWindow(sf::VideoMode({(uint) width, (uint) height}), "rays");
                 this->screen = Screen(width, height);
             };
             

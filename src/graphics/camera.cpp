@@ -22,14 +22,13 @@ const Camera& Camera::render(Screen& screen, Face face) const {
 
     Point_2D receptacle;
 
-    for(size_t i=0; i<screen_width; ++i){
-        for(size_t j=0; j<screen_height; ++j){
-            const Point_2D current_position = 
+    for(size_t i=0; i<screen_height; ++i){
+        for(size_t j=0; j<screen_width; ++j){
             receptacle.move(
-                this->position.get_x() + pixel_width*i - offset_width, 
-                this->position.get_y() + pixel_height*j - offset_height
+                pixel_height*i - offset_height, 
+                pixel_width*j - offset_width
             );
-            const Color current_color = face.get_color(this->position, this->rotation, current_position);
+            const Color current_color = face.get_color(this->position, this->rotation, receptacle);
             if(current_color.get_alpha() != 0)
                 screen.set_pixel(i, j, current_color.get_red(), current_color.get_green(), current_color.get_blue());
         }

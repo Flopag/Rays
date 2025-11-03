@@ -21,6 +21,7 @@ namespace graphics {
 
             vector<Point_3D> cached_projections;
             Point_3D prev_origin, prev_rotations;
+            //void* owner;
             bool has_cache = false;
         
         public:
@@ -33,6 +34,8 @@ namespace graphics {
                 this->cached_projections.push_back(Point_3D());
                 this->cached_projections.push_back(Point_3D());
             };
+
+            // lock system
 
             string to_string() const;
             Color get_color(const Point_3D& origin, const Point_3D& rotations, const Point_2D& location);
