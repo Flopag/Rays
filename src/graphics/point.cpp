@@ -6,11 +6,7 @@
 
 using namespace graphics;
 
-/* Point_3D */
-
-Point_3D::Point_3D(const Point_2D& point) : x(point.get_x()), y(point.get_y()), z(0) {};
-
-Point_3D& Point_3D::move(double x, double y, double z) {
+Point& Point::move(double x, double y, double z) {
     this->x = x;
     this->y = y;
     this->z = z;
@@ -18,8 +14,8 @@ Point_3D& Point_3D::move(double x, double y, double z) {
     return *this;
 }
 
-Point_3D Point_3D::rebased(Point_3D origin, Point_3D rotations) const {
-    Point_3D rebased_point(*this);
+Point Point::rebased(Point origin, Point rotations) const {
+    Point rebased_point(*this);
     /* Centering */
     rebased_point.move(
         rebased_point.get_x() - origin.get_x(),
@@ -59,29 +55,15 @@ Point_3D Point_3D::rebased(Point_3D origin, Point_3D rotations) const {
     return rebased_point;
 }
 
-Point_2D Point_3D::projection(Point_3D origin, Point_3D rotations) const {
-    Point_3D rebased_point = this->rebased(origin, rotations);
+Point Point::projection(Point origin, Point rotations) const {
+    Point rebased_point = this->rebased(origin, rotations);
 
-    Point_2D projected_point(rebased_point.get_x(), rebased_point.get_y());
+    Point projected_point(rebased_point.get_x(), rebased_point.get_y());
 
     return projected_point;
 }
 
-string Point_3D::to_string() const {
+string Point::to_string() const {
     using std::to_string;
     return "(" + to_string(this->x) + ", " + to_string(this->y) + ", " + to_string(this->z) + ")";
-}
-
-/* Point_2D */
-
-Point_2D& Point_2D::move(double x, double y) {
-    this->x = x;
-    this->y = y;
-
-    return *this;
-}
-
-string Point_2D::to_string() const {
-    using std::to_string;
-    return "(" + to_string(this->x) + ", " + to_string(this->y) + ")";
 }

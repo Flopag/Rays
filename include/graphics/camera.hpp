@@ -8,8 +8,8 @@ namespace graphics {
 
     class Camera {
         private:
-            Point_3D position = Point_3D(0, 0, 0);
-            Point_3D rotation = Point_3D(0, 0, 0);
+            Point position = Point(0, 0, 0);
+            Point rotation = Point(0, 0, 0);
             size_t width=0, height=0;
 
         public:
@@ -22,8 +22,8 @@ namespace graphics {
                 }
             };
 
-            Camera& move(Point_3D new_position);
-            Camera& rotate(Point_3D new_rotation);
+            Camera& move(Point new_position);
+            Camera& rotate(Point new_rotation);
 
             const Camera& render(Screen& screen, Face face) const;
     };

@@ -17,30 +17,31 @@ namespace graphics {
 
     class Face{
         private:
-            vector<shared_ptr<Point_3D>> points;
+            vector<shared_ptr<Point>> points;
 
-            vector<Point_3D> cached_projections;
-            Point_3D prev_origin, prev_rotations;
-            //void* owner;
+            vector<Point> cached_projections;
+            double cached_barycentrif_deno_beta=0;
+            double cached_barycentrif_deno_gamma=0;
+            double cached_a_beta=0, cached_b_beta=0, cached_c_beta=0;
+            double cached_a_gamma=0, cached_b_gamma=0, cached_c_gamma=0;
             bool has_cache = false;
         
         public:
-            Face(shared_ptr<Point_3D> a, shared_ptr<Point_3D> b, shared_ptr<Point_3D> c) {
+            Face(shared_ptr<Point> a, shared_ptr<Point> b, shared_ptr<Point> c) {
                 this->points.push_back(a);
                 this->points.push_back(b);
                 this->points.push_back(c);
 
-                this->cached_projections.push_back(Point_3D());
-                this->cached_projections.push_back(Point_3D());
-                this->cached_projections.push_back(Point_3D());
+                this->cached_projections.push_back(Point());
+                this->cached_projections.push_back(Point());
+                this->cached_projections.push_back(Point());
             };
 
-            // lock system
-
             string to_string() const;
-            Color get_color(const Point_3D& origin, const Point_3D& rotations, const Point_2D& location);
+            Face& update_projection(const Point& origin, const Point& rotations);
+            Color get_color(const Point& location) const;
 
-            vector<shared_ptr<Point_3D>> get_points() {
+            vector<shared_ptr<Point>> get_points() {
                 return points;
             };
     };
