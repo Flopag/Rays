@@ -29,6 +29,7 @@ namespace os_api {
             
             Screen& get_screen();
             Window& refresh();
+            Window& check_event();
 
             bool is_open() const;
             Window& close();

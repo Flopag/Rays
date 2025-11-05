@@ -12,8 +12,8 @@ using namespace os_api;
 using namespace graphics;
 
 int main() {
-    Window my_window(1500, 2000);
-    Camera my_camera(10, 15);
+    Window my_window(1600, 1600);
+    Camera my_camera(16, 16);
 
     Face A(make_shared<Point>(0, 0, 0), make_shared<Point>(7, 3, 0), make_shared<Point>(2, 5, 0));
 
@@ -36,6 +36,7 @@ int main() {
         my_camera.render(my_window.get_screen(), A);
         my_window.refresh();
         my_window.get_screen().flush();
+        my_window.check_event();
         rot++;
     }
 

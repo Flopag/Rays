@@ -17,6 +17,11 @@ Window& Window::refresh() {
     return *this;
 }
 
+Window& Window::check_event() {
+    this->window.pollEvent();
+    return *this;
+}
+
 bool Window::is_open() const {
     return this->window.isOpen();
 }
