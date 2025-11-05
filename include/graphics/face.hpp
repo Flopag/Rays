@@ -19,7 +19,9 @@ namespace graphics {
         private:
             vector<shared_ptr<Point>> points;
 
+            // Cache
             vector<Point> cached_projections;
+            vector<Color> cached_point_colors;
             double cached_barycentrif_deno_beta=0;
             double cached_barycentrif_deno_gamma=0;
             double cached_a_beta=0, cached_b_beta=0, cached_c_beta=0;
@@ -35,6 +37,10 @@ namespace graphics {
                 this->cached_projections.push_back(Point());
                 this->cached_projections.push_back(Point());
                 this->cached_projections.push_back(Point());
+
+                this->cached_point_colors.push_back(a->get_color());
+                this->cached_point_colors.push_back(b->get_color());
+                this->cached_point_colors.push_back(c->get_color());
             };
 
             string to_string() const;

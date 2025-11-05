@@ -2,6 +2,9 @@
 #define COLOR_HPP
 
 #include <string>
+#include <cstdint>
+
+using namespace std;
 
 namespace graphics {
 

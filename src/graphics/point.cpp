@@ -63,6 +63,11 @@ Point Point::projection(Point origin, Point rotations) const {
     return projected_point;
 }
 
+Point& Point::set_color(Color new_color) {
+    this->color = new_color; 
+    return *this;
+}
+
 string Point::to_string() const {
     using std::to_string;
     return "(" + to_string(this->x) + ", " + to_string(this->y) + ", " + to_string(this->z) + ")";

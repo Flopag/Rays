@@ -4,6 +4,8 @@ Rays is a little graphical engine to learn how does computer manage graphics.
 
 Window and painting is managed by [SFML](https://www.sfml-dev.org/)
 
+![demo](./files/demo.gif)
+
 ## Build
 
 Compilation is made using `cmake`:

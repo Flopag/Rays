@@ -28,6 +28,10 @@ Face& Face::update_projection(const Point& origin, const Point& rotations) {
     this->cached_projections[1] = this->points[1]->rebased(origin, rotations);
     this->cached_projections[2] = this->points[2]->rebased(origin, rotations);
 
+    this->cached_point_colors[0] = this->points[0]->get_color();
+    this->cached_point_colors[1] = this->points[1]->get_color();
+    this->cached_point_colors[2] = this->points[2]->get_color();
+
     Point a = this->cached_projections[0];
     Point b = this->cached_projections[1];
     Point c = this->cached_projections[2];
@@ -46,6 +50,14 @@ Face& Face::update_projection(const Point& origin, const Point& rotations) {
     return *this;
 }
 
+Color inline get_barycentrif_color(const Color& a, const Color& b, const Color& c, const double& alpha, const double& beta, const double& gamma){
+    return Color(
+        alpha*a.get_red() + beta*b.get_red() + gamma*c.get_red(),
+        alpha*a.get_green() + beta*b.get_green() + gamma*c.get_green(),
+        alpha*a.get_blue() + beta*b.get_blue() + gamma*c.get_blue()
+    );
+}
+
 Color Face::get_color(const Point& location) const {
     if(!this->has_cache)
         return Color();
@@ -53,8 +65,15 @@ Color Face::get_color(const Point& location) const {
     double beta = optimized_barycentrif_function(location, cached_a_beta, cached_b_beta, cached_c_beta) / this->cached_barycentrif_deno_beta;
     if(beta >= 0 && beta <= 1){
         double gamma = optimized_barycentrif_function(location, cached_a_gamma, cached_b_gamma, cached_c_gamma) / this->cached_barycentrif_deno_gamma;
-        if(gamma >= 0 && gamma <= 1 && beta+gamma < 1)
-            return Color(255, 255, 255);
+        if(gamma >= 0 && gamma <= 1){
+            double alpha = 1 - beta - gamma;
+            if(alpha > 0){
+                const Color& a = this->cached_point_colors[0];
+                const Color& b = this->cached_point_colors[1];
+                const Color& c = this->cached_point_colors[2];
+                return get_barycentrif_color(a, b, c, alpha, beta, gamma);
+            }
+        }
     }
 
     return Color();
