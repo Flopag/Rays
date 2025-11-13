@@ -5,6 +5,7 @@ target_sources(Graphics
         face.cpp
         point.cpp
         camera.cpp
+        corner.cpp
     
     PUBLIC
         FILE_SET HEADERS
@@ -14,6 +15,7 @@ target_sources(Graphics
             ${CMAKE_SOURCE_DIR}/include/graphics/point.hpp
             ${CMAKE_SOURCE_DIR}/include/graphics/camera.hpp
             ${CMAKE_SOURCE_DIR}/include/graphics/color.hpp
+            ${CMAKE_SOURCE_DIR}/include/graphics/corner.hpp
 )
 
 target_link_libraries(Graphics

@@ -8,6 +8,7 @@
 
 #include <os_api/screen.hpp>
 #include "point.hpp"
+#include "corner.hpp"
 #include "color.hpp"
 
 using namespace std;
@@ -17,11 +18,11 @@ namespace graphics {
 
     class Face{
         private:
-            vector<shared_ptr<Point>> points;
+            vector<shared_ptr<Corner>> corners;
 
             // Cache
             vector<Point> cached_projections;
-            vector<Color> cached_point_colors;
+            vector<Color> cached_corner_colors;
             double cached_barycentrif_deno_beta=0;
             double cached_barycentrif_deno_gamma=0;
             double cached_a_beta=0, cached_b_beta=0, cached_c_beta=0;
@@ -29,18 +30,18 @@ namespace graphics {
             bool has_cache = false;
         
         public:
-            Face(shared_ptr<Point> a, shared_ptr<Point> b, shared_ptr<Point> c) {
-                this->points.push_back(a);
-                this->points.push_back(b);
-                this->points.push_back(c);
+            Face(shared_ptr<Corner> a, shared_ptr<Corner> b, shared_ptr<Corner> c) {
+                this->corners.push_back(a);
+                this->corners.push_back(b);
+                this->corners.push_back(c);
 
                 this->cached_projections.push_back(Point());
                 this->cached_projections.push_back(Point());
                 this->cached_projections.push_back(Point());
 
-                this->cached_point_colors.push_back(a->get_color());
-                this->cached_point_colors.push_back(b->get_color());
-                this->cached_point_colors.push_back(c->get_color());
+                this->cached_corner_colors.push_back(a->get_color());
+                this->cached_corner_colors.push_back(b->get_color());
+                this->cached_corner_colors.push_back(c->get_color());
             };
 
             string to_string() const;
@@ -50,8 +51,8 @@ namespace graphics {
             Point get_projection_max() const;
             Point get_projection_min() const;
 
-            vector<shared_ptr<Point>> get_points() {
-                return points;
+            vector<shared_ptr<Corner>> get_corners() {
+                return this->corners;
             };
     };
 

@@ -8,8 +8,8 @@ string Face::to_string() const {
     using std::to_string;
     string output_string = "Points:\n";
 
-    for(shared_ptr<Point> point : this->points)
-        output_string += point->to_string() + "\n";
+    for(shared_ptr<Corner> corner : this->corners)
+        output_string += corner->to_string() + "\n";
 
     return output_string;
 }
@@ -24,13 +24,13 @@ double inline optimized_barycentrif_function(const Point& p, const double a, con
 }
 
 Face& Face::update_projection(const Point& origin, const Point& rotations) {    
-    this->cached_projections[0] = this->points[0]->rebased(origin, rotations);
-    this->cached_projections[1] = this->points[1]->rebased(origin, rotations);
-    this->cached_projections[2] = this->points[2]->rebased(origin, rotations);
+    this->cached_projections[0] = this->corners[0]->get_position().rebased(origin, rotations);
+    this->cached_projections[1] = this->corners[1]->get_position().rebased(origin, rotations);
+    this->cached_projections[2] = this->corners[2]->get_position().rebased(origin, rotations);
 
-    this->cached_point_colors[0] = this->points[0]->get_color();
-    this->cached_point_colors[1] = this->points[1]->get_color();
-    this->cached_point_colors[2] = this->points[2]->get_color();
+    this->cached_corner_colors[0] = this->corners[0]->get_color();
+    this->cached_corner_colors[1] = this->corners[1]->get_color();
+    this->cached_corner_colors[2] = this->corners[2]->get_color();
 
     Point a = this->cached_projections[0];
     Point b = this->cached_projections[1];
@@ -68,9 +68,9 @@ Color Face::get_color(const Point& location) const {
         if(gamma >= 0 && gamma <= 1){
             double alpha = 1 - beta - gamma;
             if(alpha > 0){
-                const Color& a = this->cached_point_colors[0];
-                const Color& b = this->cached_point_colors[1];
-                const Color& c = this->cached_point_colors[2];
+                const Color& a = this->cached_corner_colors[0];
+                const Color& b = this->cached_corner_colors[1];
+                const Color& c = this->cached_corner_colors[2];
                 return get_barycentrif_color(a, b, c, alpha, beta, gamma);
             }
         }
